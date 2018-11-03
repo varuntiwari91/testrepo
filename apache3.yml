@@ -1,0 +1,5 @@
+---
+ - name: installing apache role
+   hosts: clients
+   roles:
+    - apache

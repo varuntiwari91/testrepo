@@ -1,0 +1,6 @@
+---
+- hosts: clients
+  sudo: yes
+  tasks:
+    - name: install httpd
+      apt: name=httpd update_cache=yes state=latest

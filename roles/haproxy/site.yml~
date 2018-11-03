@@ -1,0 +1,10 @@
+---
+- name: Install Tomcat with Oracle Java
+  hosts: tomcat-servers
+  # remote_user: root
+  remote_user: ubuntu
+  sudo: yes
+
+  roles:
+    - java
+    - tomcat

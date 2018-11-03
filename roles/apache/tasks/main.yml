@@ -1,0 +1,22 @@
+---
+- debug: msg="www_root = {{www_root}}"
+- debug: msg="www_user = {{www_user}}"
+- debug: msg="www_group = {{www_group}}"
+
+- name: install httpd
+  sudo: yes
+  yum: name=httpd update_cache=yes state=latest
+       state=started
+  notify:
+    - Restart httpd
+
+- name: Add group(s) {{www_group}} to {{ www_user }} user
+  become: true
+  user: name=apache groups=apache append=yes
+
+- name: Ensure permission of owner {{www_user}} and group {{www_group}} at {{www_root}}
+  action: >
+    file path={{www_root}}
+    owner=apache group=apache state=directory recurse=yes
+  become: true
+

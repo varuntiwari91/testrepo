@@ -1,0 +1,9 @@
+---
+- hosts: clients
+  tasks:
+   - name: upgrade all packages
+     become: yes
+     become_user: root
+     yum:
+       name: '*'
+       state: latest
