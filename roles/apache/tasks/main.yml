@@ -6,7 +6,6 @@
 - name: install httpd
   sudo: yes
   yum: name=httpd update_cache=yes state=latest
-       state=started
   notify:
     - Restart httpd
 
